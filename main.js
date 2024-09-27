@@ -31,7 +31,7 @@ table.appendChild(thead);
 thead.appendChild(theadrow);
 theadrow.appendChild(th1);
 theadrow.appendChild(th2);
-th2.colspan= 2;                 
+th2.colSpan= 2;                 
 th1.innerHTML = "Vezetéknév";
 th2.innerHTML = "Keresztnév";
 
