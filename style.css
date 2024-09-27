@@ -1,21 +1,22 @@
-table tr:not(:first-child):hover{
-    background-color: cornflowerblue;
+table, tr, td, th{
+    border: 1px solid #000 ;
+    border-collapse: collapse;
+   
 }
-
-
-
-
-table tr:first-child{
-    color: rgb(228, 228, 228);
-    background-color: rgb(85, 90, 161) ;
+ 
+table tbody tr:nth-child(even){
+    background-color: rgb(133, 119, 119);
+}
+table tbody tr:nth-child(odd){
+    background-color: rgb(15, 82, 182);
+}
+ 
+table tbody tr:hover{
+    background-color: rgb(202, 127, 14);
+}
+ 
+table thead tr{
+    background-color: rgb(81, 100, 94);
     font-weight: bold;
 }
-table, tr, td{
-    border: 1px solid black;
-    border-collapse: collapse;
-    text-align: center;
-}
-tr:not(:first-child):nth-child(odd){
-    background-color: aqua;
-    
-}
+ 
