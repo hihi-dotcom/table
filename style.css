@@ -20,3 +20,6 @@ table thead tr{
     font-weight: bold;
 }
  
+.selected{
+    transform: scale(1.2);
+}
