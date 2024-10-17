@@ -57,10 +57,10 @@ let array = [
     table.appendChild(tbody);
     
    
-   emberhozzaadas();
+   emberhozzaadas(array);
    
 function emberhozzaadas(array){
-    
+    tbody.innerHTML = "";
     for(const pers of array){
         const tr = document.createElement('tr');
         const td = document.createElement('td'); // lastname
@@ -72,9 +72,9 @@ function emberhozzaadas(array){
              tbody.appendChild(tr);
              tr.appendChild(td);
              tr.appendChild(td2);
-         };       
+              
              
-          /*  tr.addEventListener('click', (e) => {
+           tr.addEventListener('click', (e) => {
                  console.log('clicked');
                  
                  const kiv = tbody.querySelector('.selected');
@@ -82,7 +82,7 @@ function emberhozzaadas(array){
                      kiv.classList.remove('selected');
                  }
                  e.currentTarget.classList.add('selected');
-             });*/
+             });
          
              td.innerHTML = pers.lastname;
              td2.innerHTML = pers.firstname1;
@@ -96,25 +96,27 @@ function emberhozzaadas(array){
              else{
                  td4.innerHTML = "nem";
              }
+             if(pers.firstname2 === undefined){
+                td2.colSpan = 2;
+            }
+            else{
+                const td3 = document.createElement('td');//firstname2
+                tr.appendChild(td3);
+                td3.innerHTML = pers.firstname2;
+           }
+           tr.appendChild(td4);
+           tr.appendChild(td5);
+    };   
              
 };         
-         if(pers.firstname2 === undefined){
-             td2.colSpan = 2;
-         }
-         else{
-             const td3 = document.createElement('td');//firstname2
-             tr.appendChild(td3);
-             td3.innerHTML = pers.firstname2;
-        }
-        tr.appendChild(td4);
-        tr.appendChild(td5);
-    
+        
     
 
 
    
    const form = document.getElementById('form');
    form.addEventListener('submit', (e) => {
+        e.preventDefault()
        const lastname = document.getElementById('lastname');
        const firstname1 = document.getElementById('firstname1');
        const firstname2 = document.getElementById('firstname2');
@@ -124,5 +126,23 @@ function emberhozzaadas(array){
        const firstname1value = firstname1.value;
        const firstname2value = firstname2.value;
        const marriedvalue = married.checked;
-   
+       const petvalue = pet.value;
+
+
+
+    
+       const ujember = {
+        firstname1: firstname1value,
+        firstname2: firstname2value,
+        lastname: lastnamevalue,
+        married: marriedvalue,
+        pet: petvalue
+       }
+
+       array.push(ujember);
+       emberhozzaadas(array);
+
+       if(firstname2value === " "){
+        firstname2value = undefined;
+      }
    });
