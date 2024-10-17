@@ -138,11 +138,11 @@ function emberhozzaadas(array){
         married: marriedvalue,
         pet: petvalue
        }
-
+       if(ujember.firstname2 === ""){
+        ujember.firstname2 = undefined;
+      }
        array.push(ujember);
        emberhozzaadas(array);
 
-       if(firstname2value === " "){
-        firstname2value = undefined;
-      }
+       
    });
