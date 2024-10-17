@@ -115,7 +115,7 @@ function emberhozzaadas(array){
 
    
    const form = document.getElementById('form');
-   form.addEventListener('submit', (e) => {
+form.addEventListener('submit', (e) => {
         e.preventDefault()
        const lastname = document.getElementById('lastname');
        const firstname1 = document.getElementById('firstname1');
@@ -145,4 +145,31 @@ function emberhozzaadas(array){
        emberhozzaadas(array);
 
        
-   });
+});
+
+function validateFields(firstname1, lastname, pet){
+
+    if(firstname1.value === ""){
+        const dad = firstname1.parentElement;
+        const error = dad.querySelector('.error');
+        error.innerHTML = 'Kötelező';
+        result  = false;
+    }
+
+    if(lastname.value === ""){
+        const dad = lastname.parentElement;
+        const error = dad.querySelector('.error');
+        error.innerHTML = 'Kötelező';
+        result  = false;
+    }
+
+    
+    if(pet.value === ""){
+        const dad = lastname.parentElement;
+        const error = dad.querySelector('.error');
+        error.innerHTML = 'Kötelező';
+        result  = false;
+    }
+
+    return result;
+}
