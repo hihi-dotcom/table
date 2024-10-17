@@ -130,7 +130,7 @@ form.addEventListener('submit', (e) => {
 
 
 
-    
+    if(validateFields(lastname, firstname1, pet)){
        const ujember = {
         firstname1: firstname1value,
         firstname2: firstname2value,
@@ -143,7 +143,7 @@ form.addEventListener('submit', (e) => {
       }
        array.push(ujember);
        emberhozzaadas(array);
-
+    };
        
 });
 
