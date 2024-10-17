@@ -148,7 +148,7 @@ form.addEventListener('submit', (e) => {
 });
 
 function validateFields(firstname1, lastname, pet){
-
+    let result = true;
     if(firstname1.value === ""){
         const dad = firstname1.parentElement;
         const error = dad.querySelector('.error');
