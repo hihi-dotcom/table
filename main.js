@@ -159,7 +159,7 @@ function validateFields(firstname1, lastname, pet){
     if(lastname.value === ""){
         const dad = lastname.parentElement;
         const error = dad.querySelector('.error');
-        error.innerHTML = 'Kötelező';
+        error.innerHTML = 'Kötelező!';
         result  = false;
     }
 
@@ -167,7 +167,7 @@ function validateFields(firstname1, lastname, pet){
     if(pet.value === ""){
         const dad = lastname.parentElement;
         const error = dad.querySelector('.error');
-        error.innerHTML = 'Kötelező';
+        error.innerHTML = 'Kötelező!';
         result  = false;
     }
 
