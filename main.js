@@ -39,14 +39,26 @@ let array = [
    const th2 = document.createElement('th');//keresztnev
    const th3 = document.createElement('th');//married
    const th4 = document.createElement('th');//pet*/
+   const thvalues = {
+    innerHTML: [
+        'Vezetéknév',
+        'Keresztnév', 
+        'Házas-e', 
+        'Háziállat', 
+    ]
+};
+
+for (const innerHTML of thvalues.innerHTML){
+ let thcell =  createtablecells('th', innerHTML, theadrow); 
+  
+ if(innerHTML === 'Keresztnév'){
+    thcell.colSpan = 2;
+ }
+}
 
 
-let tcell =  createtablecells('th', 'Vezetéknév', theadrow);
-let tcell2 =    createtablecells('th', 'Keresztnév', theadrow);
-let tcell3 =    createtablecells('th', 'Házas-e', theadrow);
-let tcell4 =    createtablecells('th', 'Háziállat', theadrow);
 
-tcell2.colSpan = 2;
+
    table.appendChild(thead);
    thead.appendChild(theadrow);
    /*theadrow.appendChild(th1);
@@ -59,7 +71,7 @@ tcell2.colSpan = 2;
    th3.innerHTML = "Házas-e";
    th4.innerHTML = "Háziállat";*/
    const tbody = document.createElement('tbody');
-    table.appendChild(tbody);
+   
     
    
    emberhozzaadas(array);
@@ -68,17 +80,37 @@ function emberhozzaadas(array){
     tbody.innerHTML = "";
     for(const pers of array){
         const tr = document.createElement('tr');
-        tbody.appendChild(tr);
-        const td = document.createElement('td'); // lastname
-        const td2 = document.createElement('td'); //firstname1
-        const td3 = document.createElement('td'); // lastname
+     
+
+       
+        createtablecells('td', pers.lastname, tr);
+        let td1cell = createtablecells('td', pers.firstname1, tr);
+
+        if (pers.firstname2 !== undefined) {
+            createtablecells('td', pers.firstname2, tr);
+        } else {
+            td1cell.colSpan = 2;
+        }
+        if (pers.married === true) {
+            createtablecells('td', "igen", tr);
+        } 
+        else {
+            createtablecells('td', "nem", tr);
+        };
+        createtablecells('td', pers.pet, tr);
+
+      table.appendChild(tbody);
+      tbody.appendChild(tr);
+ /*       const td = document.createElement('td'); // lastname
+        const td2 = document.createElement('td');
+ //       const td3 = document.createElement('td'); //firstname1
         const td4 = document.createElement('td'); //firstname1
-       const td5 = document.createElement('td');
+     //  const td5 = document.createElement('td');
    
              
              tr.appendChild(td);
              tr.appendChild(td2);
-              
+       */       
              
           /* tr.addEventListener('click', (e) => {
                  console.log('clicked');
@@ -90,31 +122,31 @@ function emberhozzaadas(array){
                  e.currentTarget.classList.add('selected');
              });
          */
-             td.innerHTML = pers.lastname;
+/*             td.innerHTML = pers.lastname;
              td2.innerHTML = pers.firstname1;
              
              td4.innerHTML = pers.married;
              td5.innerHTML = pers.pet;
-             
-             if(pers.married === true){
+*/             
+         /*    if(pers.married === true){
                  td4.innerHTML = "igen";
              }
              else{
                  td4.innerHTML = "nem";
              }
-             if(pers.firstname2 === undefined){
-                td2.colSpan = 2;
-            }
-            else{
-                const td3 = document.createElement('td');//firstname2
+            
+        */
+              
+                
+                /*const td3 = document.createElement('td');//firstname2
                 tr.appendChild(td3);
-                td3.innerHTML = pers.firstname2;
-           }
-           tr.appendChild(td4);
-           tr.appendChild(td5);
-    };   
+                td3.innerHTML = pers.firstname2;*/
+    };
+//           tr.appendChild(td4);
+          
+};   
              
-};         
+         
         
     
 
@@ -168,10 +200,10 @@ function validateFields(firstname1, lastname, pet){
         error.innerHTML = 'Kötelező!';
         result  = false;
     }
-s
+
     
     if(pet.value === ""){
-        const dad = lastname.parentElement;
+        const dad = pet.parentElement;
         const error = dad.querySelector('.error');
         error.innerHTML = 'Kötelező!';
         result  = false;
