@@ -88,15 +88,13 @@ function emberhozzaadas(array){
     tbody.innerHTML = "";
     for(const pers of array){
         const tr = document.createElement('tr');
-     
-
-       
         createtablecells('td', pers.lastname, tr);
         let td1cell = createtablecells('td', pers.firstname1, tr);
 
         if (pers.firstname2 !== undefined) {
             createtablecells('td', pers.firstname2, tr);
-        } else {
+        } 
+        else {
             td1cell.colSpan = 2;
         }
         if (pers.married === true) {
@@ -120,7 +118,7 @@ function emberhozzaadas(array){
              tr.appendChild(td2);
        */       
              
-          /* tr.addEventListener('click', (e) => {
+          tr.addEventListener('click', (e) => {
                  console.log('clicked');
                  
                  const kiv = tbody.querySelector('.selected');
@@ -129,7 +127,7 @@ function emberhozzaadas(array){
                  }
                  e.currentTarget.classList.add('selected');
              });
-         */
+         
 /*             td.innerHTML = pers.lastname;
              td2.innerHTML = pers.firstname1;
              
