@@ -39,22 +39,30 @@ let array = [
    const th2 = document.createElement('th');//keresztnev
    const th3 = document.createElement('th');//married
    const th4 = document.createElement('th');//pet*/
-   const thvalues = {
-    innerHTML: [
-        'Vezetéknév',
-        'Keresztnév', 
-        'Házas-e', 
-        'Háziállat', 
-    ]
-};
+   const thvalues1 = [
+    {innerHTML: 'Vezetéknév',
+     colSpan: 1
+    },
+    {innerHTML: 'Keresztnév',
+     colSpan: 2   
+    },
+    {innerHTML: 'Házas-e',
+     colSpan: 1
+    },
+    {innerHTML: 'Háziállat',
+     colSpan: 1
+    },
+   ];
+   
+   
 
-for (const innerHTML of thvalues.innerHTML){
- let thcell =  createtablecells('th', innerHTML, theadrow); 
-  
- if(innerHTML === 'Keresztnév'){
+for (const ertek of thvalues1){
+let thcell =    createtablecells('th',ertek.innerHTML, theadrow); 
+
+if(ertek.colSpan === 2){
     thcell.colSpan = 2;
- }
-}
+};
+};
 
 
 
