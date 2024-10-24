@@ -31,15 +31,16 @@ let array = [
 
 
 
-    const table = document.createElement('table');
-    document.body.appendChild(table);
+    const table = document.createElement('table'); //Táblázat generálása
+    document.body.appendChild(table); //Tábl. hozzáadása a html fájlhoz.
    const thead = document.createElement('thead');
-   const theadrow = document.createElement('tr');
+   const theadrow = document.createElement('tr'); // a táblázat fejrész sorának generálása
    /*const th1 = document.createElement('th'); //vezeteknev
    const th2 = document.createElement('th');//keresztnev
    const th3 = document.createElement('th');//married
    const th4 = document.createElement('th');//pet*/
-   const thvalues1 = [
+   const thvalues1 = [ 
+    //A táblázat fejrészének elemei értékeikkel
     {innerHTML: 'Vezetéknév',
      colSpan: 1
     },
@@ -56,7 +57,7 @@ let array = [
    
    
 
-for (const ertek of thvalues1){
+for (const ertek of thvalues1){  // a táblázat fejrészének a generálása
 let thcell =    createtablecells('th',ertek.innerHTML, theadrow); 
 
 if(ertek.colSpan === 2){
@@ -67,8 +68,8 @@ if(ertek.colSpan === 2){
 
 
 
-   table.appendChild(thead);
-   thead.appendChild(theadrow);
+   table.appendChild(thead); // a tábl. fejrészének a hozzáadása a táblázathoz
+   thead.appendChild(theadrow); // a tábl. fejrészéhez adtuk a fejrész sorát.
    /*theadrow.appendChild(th1);
    theadrow.appendChild(th2);
    theadrow.appendChild(th3);
@@ -78,36 +79,39 @@ if(ertek.colSpan === 2){
    th2.innerHTML = "Keresztnév";
    th3.innerHTML = "Házas-e";
    th4.innerHTML = "Háziállat";*/
-   const tbody = document.createElement('tbody');
+   const tbody = document.createElement('tbody'); // a tábl. törzsének létre hozzása
    
     
    
-   emberhozzaadas(array);
+   emberhozzaadas(array); // a táblázat törzsét feltöltő függvény meghívása a tömbünk bemeneti értékkel.
    
-function emberhozzaadas(array){
+function emberhozzaadas(array){ 
     tbody.innerHTML = "";
-    for(const pers of array){
-        const tr = document.createElement('tr');
-        createtablecells('td', pers.lastname, tr);
-        let td1cell = createtablecells('td', pers.firstname1, tr);
+    for(const pers of array){  
+        const tr = document.createElement('tr'); // sorok létrehozása
+        createtablecells('td', pers.lastname, tr); // egy olyan elem létrehozása, amellyel később nem foglalkozunk
+        let td1cell = createtablecells('td', pers.firstname1, tr); // egy elem létrehozása a tábl. törzsébe, később dolg.
 
-        if (pers.firstname2 !== undefined) {
+        if (pers.firstname2 !== undefined) { // ha a második keresztnév nem undefined értéket kap létre hozza a második keresztnévhez tartozó cellát
             createtablecells('td', pers.firstname2, tr);
         } 
         else {
-            td1cell.colSpan = 2;
+            td1cell.colSpan = 2; //ellenkező esetben egybe vonja a 2. keresztnév és az 1. keresztnév celláját
         }
-        if (pers.married === true) {
+        if (pers.married === true) { // Ha true a married érték igen kerül a tábl. törzsébe, ha false => nem kerül bele.
             createtablecells('td', "igen", tr);
         } 
         else {
             createtablecells('td', "nem", tr);
         };
-        createtablecells('td', pers.pet, tr);
+        createtablecells('td', pers.pet, tr); // háziállat bekerülése a tábl.-ba
 
-      table.appendChild(tbody);
-      tbody.appendChild(tr);
- /*       const td = document.createElement('td'); // lastname
+      table.appendChild(tbody); // hozzáadja a táblázathoz a létrehozott táblázattörzset.
+      tbody.appendChild(tr); //hozzáadja a tábl. törzséhez, a sorokat melyeket feltöltöttünk értékekkel.
+ 
+ 
+ 
+      /*       const td = document.createElement('td'); // lastname
         const td2 = document.createElement('td');
  //       const td3 = document.createElement('td'); //firstname1
         const td4 = document.createElement('td'); //firstname1
@@ -119,7 +123,7 @@ function emberhozzaadas(array){
        */       
              
           tr.addEventListener('click', (e) => {
-                 console.log('clicked');
+                 console.log('clicked');   // alapvetően kiemeli nekünk azt a példányt amelyre éppen kattintottunk.
                  
                  const kiv = tbody.querySelector('.selected');
                  if(kiv != undefined){
@@ -158,7 +162,7 @@ function emberhozzaadas(array){
 
 
    
-   const form = document.getElementById('form');
+   const form = document.getElementById('form');   // A form értékeivel való munka kezdete
 form.addEventListener('submit', (e) => {
         e.preventDefault()
        const lastname = document.getElementById('lastname');
@@ -174,7 +178,7 @@ form.addEventListener('submit', (e) => {
 
 
 
-    if(validateFields(lastname, firstname1, pet)){
+    if(validateFields(lastname, firstname1, pet)){ // ez az elágazás biztosítja,hogy hozzátudjunk adni újembert a tömbünkhöz.
        const ujember = {
         firstname1: firstname1value,
         firstname2: firstname2value,
@@ -191,7 +195,7 @@ form.addEventListener('submit', (e) => {
        
 });
 
-function validateFields(firstname1, lastname, pet){
+function validateFields(firstname1, lastname, pet){ // A függvény törzsében vizsgáljuk,hogy  ki vannak e töltve a mezők amelyeknek értékei elengedhetetlenek,ahhoz,hogy feltöltsük a tömbünkbe és a táblázatba a példányt.
     let result = true;
     if(firstname1.value === ""){
         const dad = firstname1.parentElement;
@@ -220,11 +224,11 @@ function validateFields(firstname1, lastname, pet){
 
 /**
  * 
- * @param {'td'|'th'} tagname 
+ * @param {'td'|'th'} tagname // a createtablecells függvényhez segédlet, a függv. paramétereiről.
  * @param {string} innerHTML 
  * @param {HTMLTableRowElement} parentElement 
  */
-function createtablecells(tagname, innerHTML, parentElement){
+function createtablecells(tagname, innerHTML, parentElement){  // ennek a függvénynek a segítségével vagyunk képesek feltölteni a táblázatunk minden celláját. 
     const tag = document.createElement(tagname);
     tag.innerHTML = innerHTML;
     parentElement.appendChild(tag);

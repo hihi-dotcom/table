@@ -27,3 +27,20 @@ table thead tr{
 .error{
     color:red;
 }
+
+form{
+    display: flex;
+    flex-direction: column;
+    max-width: 260px;
+    border: 2px solid black;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+button{
+    width: 100px;
+    margin:auto;
+}
+
+
+
