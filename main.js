@@ -191,6 +191,7 @@ form.addEventListener('submit', (e) => {
       }
        array.push(ujember);
        emberhozzaadas(array);
+       form.reset();
     };
        
 });
