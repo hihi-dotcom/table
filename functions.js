@@ -133,4 +133,66 @@ function emberhozzaadas(array){
        
 };   
              
-       
+
+
+function validateFields(){ // A függvény törzsében vizsgáljuk,hogy  ki vannak e töltve a mezők amelyeknek értékei elengedhetetlenek,ahhoz,hogy feltöltsük a tömbünkbe és a táblázatba a példányt.
+    const firstname1 = document.getElementById('firstname1');
+    const lastname = document.getElementById('lastname');
+    const pet = document.getElementById('pet');
+   
+    if(firstname1, lastname, pet){
+        validateElement(lastname, 'Adj meg egy vezetéknevet!');
+        validateElement(firstname1, 'Adj meg egy keresztnevet!');
+        validateElement(pet, 'Válassz egy állatot! '); 
+        return false;
+    };
+    return true;    
+    // let result = true;
+   /* if(firstname1.value === ""){
+        const dad = firstname1.parentElement;
+        const error = dad.querySelector('.error');
+        error.innerHTML = 'Kötelező';
+        result  = false;
+    }
+
+    if(lastname.value === ""){
+        const dad = lastname.parentElement;
+        const error = dad.querySelector('.error');
+        error.innerHTML = 'Kötelező!';
+        result  = false;
+    }
+
+    
+    if(pet.value === ""){
+        const dad = pet.parentElement;
+        const error = dad.querySelector('.error');
+        error.innerHTML = 'Kötelező!';
+        result  = false;
+    }
+    */
+   
+};
+
+
+function hibatorles(){
+    const hibak = form.querySelectorAll('.error');
+    for(const hiba of hibak)
+        hiba.innerHTML = "";
+};
+
+/**
+ * 
+ * @param {HTMLElement} htmlelement 
+ * @param {string} erroruzenet 
+ */
+
+
+function validateElement(htmlelement, erroruzenet){
+    if(htmlelement.value === ""){
+        const apa = htmlelement.parentElement;
+        const h = apa.querySelector('.error');
+        h.innerHTML = erroruzenet; 
+        return false;
+    }
+    return true;    
+};
