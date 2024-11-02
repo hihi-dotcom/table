@@ -139,14 +139,24 @@ function validateFields(){ // A függvény törzsében vizsgáljuk,hogy  ki vann
     const firstname1 = document.getElementById('firstname1');
     const lastname = document.getElementById('lastname');
     const pet = document.getElementById('pet');
-   
-    if(firstname1, lastname, pet){
+  /* 
+    if(!lastname){
         validateElement(lastname, 'Adj meg egy vezetéknevet!');
+        return false;
+    }
+    if(!firstname1){
         validateElement(firstname1, 'Adj meg egy keresztnevet!');
+        return false;
+    }
+    if(!pet){
         validateElement(pet, 'Válassz egy állatot! '); 
         return false;
+    }    
+        
+        return true; 
+          */
     };
-    return true;    
+     
     // let result = true;
    /* if(firstname1.value === ""){
         const dad = firstname1.parentElement;
@@ -171,7 +181,7 @@ function validateFields(){ // A függvény törzsében vizsgáljuk,hogy  ki vann
     }
     */
    
-};
+
 
 
 function hibatorles(){
