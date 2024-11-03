@@ -55,7 +55,7 @@ form.addEventListener('submit', (e) => {
 
 
 
-    if(validateFields()){ // ez az elágazás biztosítja,hogy hozzátudjunk adni újembert a tömbünkhöz.
+    if(validateFields(firstname1, lastname, pet)){ // ez az elágazás biztosítja,hogy hozzátudjunk adni újembert a tömbünkhöz.
        const ujember = {
         firstname1: firstname1value,
         firstname2: firstname2value,
