@@ -41,11 +41,11 @@ let array = [
 form.addEventListener('submit', (e) => {
         e.preventDefault()
        const form = e.currentTarget;
-       const lastname = document.getElementById('lastname');
+        const lastname = document.getElementById('lastname');
        const firstname1 = document.getElementById('firstname1');
        const firstname2 = document.getElementById('firstname2');
        const married = document.getElementById('married');
-       const pet = document.getElementById('pet');
+      const pet = document.getElementById('pet');
    
        const lastnamevalue = lastname.value;
        const firstname1value = firstname1.value;
@@ -55,7 +55,7 @@ form.addEventListener('submit', (e) => {
 
 
 
-    if(validateFields(firstname1, lastname, pet)){ // ez az elágazás biztosítja,hogy hozzátudjunk adni újembert a tömbünkhöz.
+    if(!validateFields(firstname1, lastname, pet)){ // ez az elágazás biztosítja,hogy hozzátudjunk adni újembert a tömbünkhöz.
        const ujember = {
         firstname1: firstname1value,
         firstname2: firstname2value,

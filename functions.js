@@ -136,23 +136,21 @@ function emberhozzaadas(array){
 
 
 function validateFields(firstname1, lastname, pet){ // A függvény törzsében vizsgáljuk,hogy  ki vannak e töltve a mezők amelyeknek értékei elengedhetetlenek,ahhoz,hogy feltöltsük a tömbünkbe és a táblázatba a példányt.
-    const firstname1 = document.getElementById('firstname1');
-    const lastname = document.getElementById('lastname');
-    const pet = document.getElementById('pet');
-    let result = true;
-    if(validateElement(firstname1)){
-        validateElement(firstname1,"Adj meg egy keresztnevet!");
-        result = false;
-    }
-    if(validateElement(lastname)){
-        validateElement(lastname,"Adj meg egy vezetéknevet!");
-        result = false;
-    } if(validateElement(pet)){
-        validateElement(pet,"Válassz ki egy állatot!");
-        result = false;
-    }
-    return result;
 
+    
+    if( validateElement(firstname1,"Adj meg egy keresztnevet!")){
+       return false;
+      
+    }
+    if(validateElement(lastname,"Adj meg egy vezetéknevet!")){
+        return false; 
+       
+    } if( validateElement(pet,"Válassz ki egy állatot!")){
+        return false;
+        
+    }
+ 
+    return true;
 
   /* 
     if(!lastname){
@@ -219,5 +217,6 @@ function validateElement(htmlelement, erroruzenet){
         h.innerHTML = erroruzenet;
         return false;
     }
-    return true;    
+    
+        return true;      
 };
