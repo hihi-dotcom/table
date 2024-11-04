@@ -137,20 +137,20 @@ function emberhozzaadas(array){
 
 function validateFields(firstname1, lastname, pet){ // A függvény törzsében vizsgáljuk,hogy  ki vannak e töltve a mezők amelyeknek értékei elengedhetetlenek,ahhoz,hogy feltöltsük a tömbünkbe és a táblázatba a példányt.
 
-    
+    let result = true;
     if( validateElement(firstname1,"Adj meg egy keresztnevet!")){
-       return false;
+       result =  false;
       
     }
     if(validateElement(lastname,"Adj meg egy vezetéknevet!")){
-        return false; 
+        result = false; 
        
     } if( validateElement(pet,"Válassz ki egy állatot!")){
-        return false;
+        result = false;
         
     }
  
-    return true;
+    return result;
 
   /* 
     if(!lastname){
